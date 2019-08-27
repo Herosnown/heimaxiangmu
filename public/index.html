@@ -6,8 +6,35 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-  <title>project</title>
+  <title>{{message}}</title>
 </head>
+<style>
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .el-menu-item.is-active {
+    background-color: skyblue !important;
+  }
+
+  .el-menu-item:hover {
+    background-color: #409EFF !important;
+  }
+
+  .clearfix:after {
+    /*伪元素是行内元素 正常浏览器清除浮动方法*/
+    content: '';
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+
+  .clearfix {
+    *zoom: 1;
+  }
+</style>
 
 <body>
   <noscript>
