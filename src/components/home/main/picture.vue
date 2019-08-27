@@ -13,6 +13,7 @@
           </div>
         </el-tab-pane>
         <el-tab-pane label="收藏" name="sec"></el-tab-pane>
+
         <el-tab-pane label="上传图片" name="upload">
           <el-upload class="avatar-uploader" action="#" :http-request="uploadimg">
             <img v-if="imageUrl" :src="imageUrl" class="avatar" />
@@ -98,17 +99,6 @@ export default {
   overflow: auto;
 }
 
-.clearfix:after {
-  /*伪元素是行内元素 正常浏览器清除浮动方法*/
-  content: '';
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
-}
-.clearfix {
-  *zoom: 1;
-}
 .avatar-uploader .el-upload {
   border: 1px dashed #d9d9d9;
   border-radius: 6px;
@@ -131,5 +121,8 @@ export default {
   width: 178px;
   height: 178px;
   display: block;
+}
+.el-upload {
+  border: 1px solid red !important;
 }
 </style>

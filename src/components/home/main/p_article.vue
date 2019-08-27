@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-loading="loading">
     <com-bread>
       <span id="article">{{bread}}</span>
     </com-bread>
@@ -39,7 +39,7 @@
         </el-form-item>
         <el-divider></el-divider>
         <el-form-item>
-          <el-button type="primary" @click="publishArt(false)">发表</el-button>
+          <el-button type="primary" @click="publishArt(false)">{{bread1}}</el-button>
           <el-button @click="publishArt(true)">存入草稿</el-button>
         </el-form-item>
       </el-form>
@@ -51,7 +51,9 @@
 export default {
   data () {
     return {
+      loading: true,
       bread: '',
+      bread1: '',
       rule: {
         title: [
           { required: true, message: '题目不能为空', trigger: 'blur' },
@@ -134,12 +136,17 @@ export default {
   created () {
     this.id = this.$route.query.id
     this.bread = this.id ? '修改文章' : '发表文章'
+    this.bread1 = this.id ? '保存修改' : '发表'
+    document.title = this.id ? '修改文章' : '发表文章'
     this.id && this.getArticle()
     this.$axios({
       url: '/channels'
     }).then(res => {
       this.channels = res.data.channels
     })
+  },
+  mounted () {
+    this.loading = false
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <el-container class="page">
-    <el-aside width="200px" class="aside">
+    <el-aside :width="width" class="aside">
       <com-side></com-side>
     </el-aside>
     <el-container>
@@ -15,14 +15,20 @@
 </template>
 
 <script>
-// import aside from './aside'
-// import header from './header'
-// export default {
-//   components: {
-//     'com-side': aside,
-//     'com-header': header
-//   }
-// }
+import eventBus from '../../eventBus'
+export default {
+  data () {
+    return {
+      width: '200px'
+    }
+  },
+  created () {
+    eventBus.$on('closeopen', () => {
+      this.width = this.width === '200px' ? '40px' : '200px'
+    })
+  },
+  mounted () {}
+}
 </script>
 
 <style lang='less' scoped>

@@ -2,7 +2,7 @@
   <el-row :gutter="20" class="header">
     <el-col :span="10 ">
       <div class="grid-content bg-purple">
-        <i class="el-icon-s-fold"></i>&nbsp;&nbsp;
+        <i class="el-icon-s-fold" @click="openclose"></i>&nbsp;&nbsp;
         <span>江苏传智播客教育科技股份有限公司</span>
       </div>
     </el-col>
@@ -19,7 +19,7 @@
       <el-dropdown @command="cancel">
         <span class="el-dropdown-link">
           {{dataform.name}}
-          <i class="el-icon-arrow-down el-icon--right"></i>
+          <i class="el-icon-arrow-down el-icon--right" ></i>
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人信息</el-dropdown-item>
@@ -50,6 +50,9 @@ export default {
       }).then(res => {
         this.dataform = res.data
       })
+    },
+    openclose () {
+      eventBus.$emit('closeopen')
     },
     cancel (command) {
       if (command !== 't') {

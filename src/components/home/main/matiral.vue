@@ -1,5 +1,5 @@
 <template>
-  <div class="clearfix">
+  <div class="clearfix" v-loading="loading">
     <com-bread>素材列表</com-bread>
     <div class="clearfix">
       <el-radio-group
@@ -49,6 +49,7 @@
 export default {
   data () {
     return {
+      loading: true,
       fileList: [],
       tabPosition: 'all',
       userimg: {
@@ -99,6 +100,7 @@ export default {
     },
     changePage (newpage) {
       this.userimg.page = newpage
+      this.loading = true
       this.getMetiral(this.userimg)
     },
     getMetiral (params) {
@@ -108,6 +110,7 @@ export default {
       }).then(res => {
         this.respondata = res.data.results
         this.totalcont = res.data.total_count
+        this.loading = false
       })
     },
     getstatus (val) {

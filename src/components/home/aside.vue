@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div ref="asidebox">
     <div class="logo123">
       <img src="../../assets/img/logo.png" />
     </div>

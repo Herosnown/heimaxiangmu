@@ -3,6 +3,11 @@ import App from './App.vue'
 import router from './router'
 import axios from './inter'
 import comp from './comp'
+import nprogress from 'nprogress'
+import 'nprogress/nprogress.css'
+import echarts from 'echarts'
+
+Vue.prototype.$echarts = echarts
 Vue.use(comp)
 Vue.prototype.$axios = axios
 
@@ -17,6 +22,7 @@ Vue.config.productionTip = false
 // })
 
 router.beforeEach((to, from, next) => {
+  nprogress.start()
   document.title = to.meta.title || 'project'
   console.log(from)
   if (to.path.startsWith('/home')) {
@@ -33,6 +39,9 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+})
+router.afterEach(() => {
+  nprogress.done()
 })
 
 new Vue({
